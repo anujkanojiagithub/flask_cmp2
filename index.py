@@ -20,12 +20,12 @@ def home():
     return render_template('index.html',nav=nav)
 
 
-@app.route('/data/<string:brand>')
-def brandinfo(brand):
+@app.route('/data/<string:brand_name>')
+def brandinfo(brand_name):
     print(brand)
-    nav = db.session.query(allpro).all()
+    nav = db.session.query(brand).all()
     # data = allpro.objects.filter(brand=brand)
-    data = db.session.query(allpro).filter(allpro.brand==brand)
+    data = db.session.query(allpro).filter(allpro.brand==brand_name)
     for i in data:
         print(i.img_name)
     # return render(request, 'list.html', {'contacts': contacts})
